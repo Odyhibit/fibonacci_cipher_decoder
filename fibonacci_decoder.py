@@ -101,10 +101,14 @@ def decode_base64(encoded_string):
     binary_string = base64_to_binary(encoded_string)
     return fibonacci_cipher_decoder(binary_string)
 
-
+def decode_bae64_to_text(encoded_string):
+    """Decode a base64 encoded string to text."""
+    decoded_numbers = decode_base64(encoded_string)
+    return ''.join([chr(i) for i in decoded_numbers])
 
 print(f"fibonacci_cipher_encoder('Odyhibit was here!'): {fibonacci_cipher_encoder('Odyhibit was here!')}")
 print(f"base64 test {binary_to_base64(fibonacci_cipher_encoder('Odyhibit was here!'))}")
 
 print(f"fibonacci_cipher_decoder' {fibonacci_cipher_decoder(fibonacci_cipher_encoder('Odyhibit was here!'))}")
-print(f"base64 test :{''.join([chr(i) for i in decode_base64(binary_to_base64(fibonacci_cipher_encoder('Odyhibit was here!')))])}")
+print(f"base64 to text :{decode_bae64_to_text (binary_to_base64(fibonacci_cipher_encoder('Odyhibit was here!')))}")
+print(f"base64 test {binary_to_base64(fibonacci_cipher_encoder('Hello World!'))}")
