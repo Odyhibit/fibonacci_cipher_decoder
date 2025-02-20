@@ -1,16 +1,16 @@
 # Fibonacci coding 
 
-The Python script is a simple Fibonacci encoder and decoder. The encoder takes a string and encodes it using the Fibonacci sequence, and returns the binary code using base64. The decoder takes a base64 encoded string and decodes it back to the original string.
-You can use the script to output binary, a list of decimal numbers, or a base64 string.
+The Python script is a simple Fibonacci encoder and decoder. The encoder takes a string and encodes it using the Fibonacci sequence, and returns the binary code.
+You can use the script to encode/decode binary, a list of decimal numbers, or a base64 string.
 
 The webpage is a simple interface that encodes a string to base64 using Fibonacci coding.
 It will decode a base64 string back to the original string.
 Try it out with the online version https://odyhibit.github.io/fibonacci_cipher_decoder/
 
 Basics of Fibonacci coding:
-- The Fibonacci sequence is a series of numbers where a number is the sum of the two preceding ones, starting from 0 and 1.
-- The Fibonacci sequence is 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
-- It is based the Zeckendorf representation of integers using Fibonacci numbers.
+The Fibonacci sequence is a series of numbers where a number is the sum of the two preceding ones, starting from 0 and 1. 
+The Fibonacci sequence is 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
+It is based the Zeckendorf representation of integers using Fibonacci numbers.
 
 The Zeckendorf representation of an integer is a representation of that integer as the sum of non-consecutive Fibonacci numbers.
 
