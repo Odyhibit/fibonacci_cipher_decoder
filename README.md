@@ -21,5 +21,5 @@ So the number 10 is encoded as 010011.
 fibonacci sequence:  1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
 the number 10        0  1  0  0  1  
 ```
-You just add the numbers in the sequence that are match where the bitmask is a 1.
+You just add the numbers in the sequence that match where the bitmask is a 1.
 
