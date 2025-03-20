@@ -96,44 +96,48 @@ function base64ToBinary(base64String) {
 
 function fibonacciCipherDecoder(encodedBinary) {
     let decodedText = "";
-    let segments = [];
+    let remainingBinary = encodedBinary;
 
-    // Split the binary string into segments at "1" marker positions
-    let currentSegment = "";
-    for (let i = 0; i < encodedBinary.length; i++) {
-        currentSegment += encodedBinary[i];
-        if (currentSegment.endsWith("1") && i > 0 && encodedBinary[i-1] === "1") {
-            // Found a "11" pattern - end of segment
-            segments.push(currentSegment.slice(0, -1)); // Remove the last "1" as it's just a separator
-            currentSegment = "";
-        }
-    }
+    //console.log("Starting decode of:", remainingBinary);
 
-    // Process each segment
-    for (let segment of segments) {
-        if (segment.length === 0) continue;
+    // Process until no more "11" patterns are found
+    while (remainingBinary.includes("11")) {
+        // Find position of next "11" pattern
+        let splitIndex = remainingBinary.indexOf("11") + 1;  // End of segment includes first "1"
 
-        // Convert binary to Fibonacci indices
-        let binaryArray = segment.split("").map(bit => parseInt(bit));
+        // Extract current segment (up to and including first "1" of "11")
+        let currentSegment = remainingBinary.substring(0, splitIndex);
+        //console.log("Processing segment:", currentSegment);
 
-        // Generate enough Fibonacci numbers
+        // Move to next segment (skip the second "1")
+        remainingBinary = remainingBinary.substring(splitIndex + 1);
+        //console.log("Remaining binary:", remainingBinary);
+
+        // Convert segment to array of integers
+        let binaryArray = currentSegment.split("").map(bit => parseInt(bit));
+        //console.log("Binary array:", binaryArray);
+
+        // Generate Fibonacci sequence
         let fib = [1, 2];
         while (fib.length < binaryArray.length) {
             fib.push(fib[fib.length - 1] + fib[fib.length - 2]);
         }
+        //console.log("Fibonacci sequence:", fib);
 
-        // Calculate the code point value
+        // Calculate code point
         let codePoint = 0;
         for (let i = 0; i < binaryArray.length; i++) {
             if (binaryArray[i] === 1) {
                 codePoint += fib[i];
             }
         }
+        //console.log("Code point:", codePoint, "→", String.fromCodePoint(codePoint));
 
-        // Convert code point to character
+        // Add character to result
         decodedText += String.fromCodePoint(codePoint);
     }
 
+    //console.log("Final decoded text:", decodedText);
     return decodedText;
 }
 
